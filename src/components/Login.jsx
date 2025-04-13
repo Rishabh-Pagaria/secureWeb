@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -68,6 +68,12 @@ const Login = () => {
             required
           />
         </div>
+        <p className="text-sm text-center mb-4">
+          Don't have an account?{' '}
+          <Link to="/register" className="text-blue-600 hover:underline">
+            Register here
+          </Link>
+        </p>
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"

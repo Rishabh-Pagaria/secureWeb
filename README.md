@@ -6,7 +6,7 @@
   
 </head>
 <body>
-  <h1>React + Vite + Express + MySQL Application</h1>
+  <h1>secureWeb Application</h1>
   <p>This application is built using React (with Vite), Express.js, and MySQL. It includes features like user registration and login with secure password storage.</p>
 
   <h2>Steps to Set Up and Run the Application</h2>

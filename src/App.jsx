@@ -7,6 +7,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import Register from './components/Register';
+import UserLogin from './components/UserLogin';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/user-dashboard" element={<UserLogin />} />
       </Routes>
     </Router>
   );

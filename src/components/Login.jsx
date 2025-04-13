@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -42,6 +43,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
             placeholder="Enter your email"
+            required
           />
         </div>
         <div className="mb-4">
@@ -55,6 +57,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
             placeholder="Enter your password"
+            required
           />
         </div>
         <button
@@ -63,6 +66,12 @@ const Login = () => {
         >
           Login
         </button>
+        <p className="text-sm text-center mt-4">
+          If not a user?{' '}
+          <Link to="/register" className="text-blue-600 hover:underline">
+            Register here
+          </Link>
+        </p>
       </form>
     </div>
   );

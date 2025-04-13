@@ -1,27 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    // Client-side validation
-    if (!email.includes('@')) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long.');
-      return;
-    }
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-    // Handle login logic here
-    alert('Login successful!');
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        setError(errorMessage);
+        return;
+      }
+
+      // Redirect to the user dashboard on successful login
+      navigate('/user-dashboard');
+    } catch (err) {
+      console.error('Error during login:', err);
+      setError('Something went wrong. Please try again later.');
+    }
   };
 
   return (
@@ -66,12 +74,6 @@ const Login = () => {
         >
           Login
         </button>
-        <p className="text-sm text-center mt-4">
-          If not a user?{' '}
-          <Link to="/register" className="text-blue-600 hover:underline">
-            Register here
-          </Link>
-        </p>
       </form>
     </div>
   );

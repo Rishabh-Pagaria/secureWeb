@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React + Vite + Express + MySQL Application</title>
+  
 </head>
 <body>
   <h1>React + Vite + Express + MySQL Application</h1>

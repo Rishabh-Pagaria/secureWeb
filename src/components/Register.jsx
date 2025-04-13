@@ -20,7 +20,7 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -38,8 +38,25 @@ const Register = () => {
         return;
     }
 
-    // Handle registration logic here
-    alert('Registration successful!');
+    try {
+        const response = await fetch('http://localhost:3000/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+    
+        if (!response.ok) {
+          const errorMessage = await response.text();
+          setError(errorMessage);
+          return;
+        }
+    
+        alert('Registration successful!');
+        setFormData({ name: '', email: '', contact: '', password: '' });
+      } catch (err) {
+        console.error('Error registering user:', err);
+        setError('Something went wrong. Please try again later.');
+      }
   };
 
   return (
